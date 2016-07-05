@@ -18,10 +18,10 @@ namespace MyDBConnection
 
         private void Initialize()
         {
-            _server = "108.167.137.28";
-            _database = "danielfr_REstate";
-            _uid = "danielfr_admin";
-            _password = "bkh8qtx4";
+            _server = "localhost";
+            _database = "dbname";
+            _uid = "username";
+            _password = "password";
             string connectionString;
             connectionString = "SERVER=" + _server + ";" + "DATABASE=" +
             _database + ";" + "UID=" + _uid + ";" + "PASSWORD=" + _password + ";";
@@ -41,7 +41,7 @@ namespace MyDBConnection
                 switch (ex.Number)
                 {
                     case 0:
-                        Console.WriteLine("Cannot connect to the database server. Contact administrator.");
+                        Console.WriteLine("Cannot connect to the database server. Contact the database administrator.");
                         break;
 
                     case 1045:
@@ -70,6 +70,8 @@ namespace MyDBConnection
             }
             catch (MySqlException ex)
             {
+                Console.WriteLine("Error:" + ex.Message);
+                Console.WriteLine("Please check input, or contact the database administrator.");
                 return false;
             }
         }
